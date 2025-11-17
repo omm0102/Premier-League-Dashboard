@@ -1,0 +1,117 @@
+let allTeams = [];
+
+async function loadTeamsSection() {
+    try {
+        const res = await fetch("./JSON/teams.json");
+        allTeams = await res.json();
+
+        renderTeamCards(allTeams);
+        setupTeamModal();
+    } catch (err) {
+        console.error("載入 teams.json 失敗：", err);
+    }
+}
+
+function getLocalCrest(teamName) {
+    if (typeof getTeamMeta === "function") {
+        const meta = getTeamMeta(teamName);
+        if (meta && meta.crest) return meta.crest;
+    }
+    return null;
+}
+
+function renderTeamCards(teams) {
+    const grid = document.getElementById("teams-grid");
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    teams.forEach(team => {
+        const card = document.createElement("div");
+        card.className = "team-card";
+        card.dataset.teamKey = team.team_key;
+
+        const localCrest = getLocalCrest(team.team_name);
+        const crestSrc = localCrest || team.team_badge;
+
+        const venueName = team.venue?.venue_name || "Stadium N/A";
+        const venueCity = team.venue?.venue_city || "";
+
+        card.innerHTML = `
+            <div class="team-card-header">
+                <img src="${crestSrc}" alt="${team.team_name} crest" class="team-card-crest">
+                <div>
+                    <div class="team-card-name">${team.team_name}</div>
+                    <div class="team-card-meta">${venueName}${venueCity ? " · " + venueCity : ""}</div>
+                </div>
+            </div>
+            <div class="team-card-meta">
+                成立：${team.team_founded || "N/A"}
+            </div>
+        `;
+
+        card.addEventListener("click", () => openTeamModal(team.team_key));
+        grid.appendChild(card);
+    });
+}
+
+function setupTeamModal() {
+    const modal = document.getElementById("team-modal");
+    const backdrop = document.getElementById("team-modal-backdrop");
+    const closeBtn = document.getElementById("team-modal-close");
+
+    function close() {
+        modal.classList.remove("show");
+    }
+
+    backdrop.addEventListener("click", close);
+    closeBtn.addEventListener("click", close);
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") close();
+    });
+}
+
+function openTeamModal(teamKey) {
+    const modal = document.getElementById("team-modal");
+    const crestEl = document.getElementById("team-modal-crest");
+    const nameEl = document.getElementById("team-modal-name");
+    const metaEl = document.getElementById("team-modal-meta");
+    const venueEl = document.getElementById("team-modal-venue");
+    const coachEl = document.getElementById("team-modal-coach");
+    const squadListEl = document.getElementById("team-modal-squad-list");
+
+    const team = allTeams.find(t => t.team_key === teamKey);
+    if (!team) return;
+
+    const localCrest = getLocalCrest(team.team_name);
+    crestEl.src = localCrest || team.team_badge;
+    crestEl.alt = team.team_name + " crest";
+    nameEl.textContent = team.team_name;
+
+    metaEl.textContent = `國家：${team.team_country || "N/A"} · 成立：${team.team_founded || "N/A"}`;
+
+    const venue = team.venue || {};
+    venueEl.textContent = `主場：${venue.venue_name || "N/A"}（${venue.venue_city || ""}${
+        venue.venue_capacity ? ` · 容納 ${venue.venue_capacity} 人` : ""
+    }）`;
+
+    const coach = (team.coaches && team.coaches[0]) || null;
+    coachEl.textContent = coach
+        ? `主教練：${coach.coach_name || "N/A"}`
+        : "主教練：N/A";
+
+    // 顯示前 10 名球員（簡單版）
+    const players = Array.isArray(team.players) ? team.players.slice(0, 10) : [];
+    squadListEl.innerHTML = "";
+    players.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = `${p.player_name} · ${p.player_type || ""}`;
+        squadListEl.appendChild(li);
+    });
+
+    modal.classList.add("show");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadTeamsSection();
+});

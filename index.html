@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英格蘭足球超級聯賽</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./JS/data-teams.js" defer></script>
+    <script src="./JS/overview.js" defer></script>
+    <script src="./JS/fixtures.js" defer></script>
+    <script src="./JS/results.js" defer></script>
+    <script src="./JS/stats.js" defer></script>
+    <script src="./JS/teams.js" defer></script>
+    <script src="./JS/players.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./img/Premier_League_Logo.svg">
+            <h2>英格蘭足球超級聯賽</h2>
+        </div>
+        <nav>
+            <ul class="nav-content">
+                <li><a href="#overview">總覽</a></li>
+                <li><a href="#fixtures">賽程</a></li>
+                <li><a href="#results">戰績</a></li>
+                <li><a href="#stats">統計資料</a></li>
+                <li><a href="#teams">球隊</a></li>
+                <li><a href="#players">球員</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="home">
+            <h2>英格蘭足球超級聯賽 資訊儀表板</h2>
+            <h2>Premier League Dashboard</h2>
+            <p>本網站以英格蘭足球超級聯賽（Premier League）為主題，整理本季的賽程、戰績、統計數據與球隊／球員資料，讓使用者可以快速掌握聯賽最新動態。</p>
+        </div>
+            <section class="league-overview" id="overview">
+            <div class="league-overview-header"><h2>總覽</h2></div>
+            <section class="league-highlight-section">
+                <h3>聯賽亮點 Highlights</h3>
+                <div class="highlight-grid">
+                    <div class="highlight-block highlight-teams">
+                        <h3>排名前三球隊</h3>
+                        <ol id="highlight-top-teams">
+                        </ol>
+                        <span class="more-link"><a href="#results">查看完整戰績與積分榜</a></span>
+                    </div>
+                    <div class="highlight-block highlight-players">
+                        <h3>射手榜前三名</h3>
+                        <ol id="highlight-top-scorers">
+                        </ol>
+                        <span class="more-link"><a href="#stats">查看完整統計資料</a></span>
+                    </div>
+                </div>
+            </section>
+            <section class="league-kpi-section">
+                <h3>聯賽關鍵數據 Key Figures</h3>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <span class="kpi-label">已進行場次</span><br>
+                        <span class="kpi-value" id="kpi-played">380</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-label">總進球數</span><br>
+                        <span class="kpi-value" id="kpi-goals">1115</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-label">目前榜首</span><br>
+                        <span class="kpi-value" id="kpi-leader"></span>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="fixtures-section" id="fixtures">
+            <div class="fixtures-header"><h2>比賽賽程</h2></div>
+            <div class="fixtures-filter">
+                <div class="filter-group">
+                    <label for="filter-date">日期：</label>
+                    <input type="date" id="filter-date">
+                </div>
+                <div class="filter-group">
+                    <label for="filter-team">球隊：</label>
+                    <select class="filter-team" id="filter-team">
+                        <option value="">全部球隊</option>
+                    </select>
+                </div>
+                <button id="filter-reset" class="btn-reset">重設</button>
+            </div>
+            <div class="fixtures-list" id="fixtures-list"></div>
+        </section>
+        <section class="results-section" id="results">
+            <div class="results-header"><h2>比賽結果與戰績</h2></div>
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>球隊</th>
+                        <th>場次</th>
+                        <th>勝</th>
+                        <th>平</th>
+                        <th>負</th>
+                        <th>積分</th>
+                    </tr>
+                </thead>
+                <tbody id="standings-body"></tbody>
+            </table>
+        </section>
+        <section class="stats-section" id="stats">
+            <div class="stats-header"><h2>統計資料</h2></div>
+            <div class="stats-tabs">
+                <button class="stats-tab active" data-target="scorers">射手榜</button>
+                <button class="stats-tab" data-target="yellow">黃牌榜</button>
+                <button class="stats-tab" data-target="red">紅牌榜</button>
+            </div>
+            <!-- 射手榜 -->
+            <div class="stats-block stats-panel active" id="panel-scorers">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>球員</th>
+                            <th>球隊</th>
+                            <th>進球</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stats-top-scorers"></tbody>
+                </table>
+            </div>
+
+            <!-- 黃牌榜 -->
+            <div class="stats-block stats-panel" id="panel-yellow">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>球員</th>
+                            <th>球隊</th>
+                            <th>黃牌</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stats-top-yellow"></tbody>
+                </table>
+            </div>
+
+            <!-- 紅牌榜 -->
+            <div class="stats-block stats-panel" id="panel-red">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>球員</th>
+                            <th>球隊</th>
+                            <th>紅牌</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stats-top-red"></tbody>
+                </table>
+            </div>
+        </section>
+        <section class="teams-section" id="teams">
+            <div class="teams-header">
+                <h2>球隊列表</h2>
+                <p>點擊卡片查看球隊詳情與部分球員名單。</p>
+            </div>
+            <div class="teams-grid" id="teams-grid"></div>
+            <div class="team-modal" id="team-modal">
+                <div class="team-modal-backdrop" id="team-modal-backdrop"></div>
+                <div class="team-modal-content">
+                    <button class="team-modal-close" id="team-modal-close">&times;</button>
+                    <div class="team-modal-header">
+                        <img src="" alt="" class="team-modal-crest" id="team-modal-crest">
+                        <div>
+                            <h3 id="team-modal-name"></h3>
+                            <p id="team-modal-meta"></p>
+                        </div>
+                    </div>
+                    <div class="team-modal-body">
+                        <div class="team-modal-info">
+                            <p id="team-modal-venue"></p>
+                            <p id="team-modal-coach"></p>
+                        </div>
+                        <div class="team-modal-squad">
+                            <h4>球員名單（節錄）</h4>
+                            <ul id="team-modal-squad-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="players-section" id="players">
+            <div class="players-header"><h2>球員列表</h2></div>
+            <div class="players-filters">
+                <input type="text" id="player-search" placeholder="搜尋球員姓名…">
+                <select id="player-team-filter">
+                    <option value="">所有球隊</option>
+                </select>
+            </div>
+
+            <div class="players-grid" id="players-grid"></div>
+
+            <div class="player-modal" id="player-modal">
+                <div class="player-modal-backdrop" id="player-modal-backdrop"></div>
+                <div class="player-modal-content">
+                    <button class="player-modal-close" id="player-modal-close">&times;</button>
+
+                    <div class="player-modal-header">
+                        <img id="player-modal-img" class="player-modal-img" alt="">
+                        <div>
+                            <h3 id="player-modal-name"></h3>
+                            <p id="player-modal-team"></p>
+                        </div>
+                    </div>
+
+                    <div class="player-modal-body">
+                        <p id="player-modal-position"></p>
+                        <p id="player-modal-stats"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="about-section" id="about">
+            <h2 class="about-title">關於本網站</h2>
+
+            <!-- 專題說明 -->
+            <div class="about-block">
+                <h3>專題簡介</h3>
+                <p>
+                    本網站以「英格蘭足球超級聯賽（Premier League）」為主題，提供賽程、戰績、
+                    球員資料、統計數據等資訊整合的儀表板。
+                    所有資料皆由 API 抓取後，再轉換為本地 JSON 供前端展示。
+                </p>
+            </div>
+
+            <!-- 英超介紹 -->
+            <div class="about-block">
+                <h3>關於英超 Premier League</h3>
+                <p>
+                    英格蘭足球超級聯賽成立於 1992 年，是世界上最具影響力的足球聯賽之一。
+                    共有 20 支隊伍，採 38 輪主客場雙循環賽制。
+                </p>
+            </div>
+
+            <!-- 使用技術 -->
+            <div class="about-block">
+                <h3>使用技術</h3>
+                <ul class="tech-list">
+                    <li>HTML / CSS / JavaScript</li>
+                    <li>Node.js（資料抓取與轉存 JSON）</li>
+                    <li>Fetch API（前端讀取本地 JSON）</li>
+                    <li>Wikipedia API（球員圖片取得）</li>
+                </ul>
+            </div>
+
+            <!-- 資料來源 -->
+            <div class="about-block">
+                <h3>資料來源</h3>
+                <ul class="source-list">
+                    <li>APIFootball（賽程 / 統計 / 球隊 / 球員資訊）</li>
+                    <li>Wikipedia / Wikidata（球員照片）</li>
+                    <li>Premier League 官方網站（資料比對）</li>
+                </ul>
+            </div>
+        </section>
+        <footer class="site-footer">
+            <div class="footer-copyright">
+                © 2025 Premier League Dashboard | For Educational Use Only<br>
+                本網站所使用之商標、球隊隊徽、球員照片及內容版權均屬原權利人所有，
+                僅供課程專題與非商業展示用途。<br>
+                部分球員照片來源於 Wikipedia / Wikidata，依 CC BY-SA 授權使用。<br>
+                資料來源：APIFootball API。
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
