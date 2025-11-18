@@ -14,6 +14,7 @@
     <script src="./JS/players.js" defer></script>
 </head>
 <body>
+<!-- --------------------------------------------------------------------------------------- -->
     <header>
         <div class="logo">
             <img src="./img/Premier_League_Logo.svg">
@@ -32,12 +33,14 @@
         </nav>
     </header>
     <main>
+<!-- --------------------------------------------------------------------------------------- -->
         <div class="home">
             <h2>英格蘭足球超級聯賽 資訊儀表板</h2>
             <h2>Premier League Dashboard</h2>
             <p>本網站以英格蘭足球超級聯賽（Premier League）為主題，整理本季的賽程、戰績、統計數據與球隊／球員資料，讓使用者可以快速掌握聯賽最新動態。</p>
         </div>
-            <section class="league-overview" id="overview">
+<!-- --------------------------------------------------------------------------------------- -->
+        <section class="league-overview" id="overview">
             <div class="league-overview-header"><h2>總覽</h2></div>
             <section class="league-highlight-section">
                 <h3>聯賽亮點 Highlights</h3>
@@ -74,6 +77,7 @@
                 </div>
             </section>
         </section>
+<!-- --------------------------------------------------------------------------------------- -->
         <section class="fixtures-section" id="fixtures">
             <div class="fixtures-header"><h2>比賽賽程</h2></div>
             <div class="fixtures-filter">
@@ -89,8 +93,11 @@
                 </div>
                 <button id="filter-reset" class="btn-reset">重設</button>
             </div>
-            <div class="fixtures-list" id="fixtures-list"></div>
+            <div class="filter-content">
+                <div class="fixtures-list" id="fixtures-list"></div>
+            </div>
         </section>
+<!-- --------------------------------------------------------------------------------------- -->
         <section class="results-section" id="results">
             <div class="results-header"><h2>比賽結果與戰績</h2></div>
             <table class="standings-table">
@@ -108,6 +115,7 @@
                 <tbody id="standings-body"></tbody>
             </table>
         </section>
+<!-- --------------------------------------------------------------------------------------- -->
         <section class="stats-section" id="stats">
             <div class="stats-header"><h2>統計資料</h2></div>
             <div class="stats-tabs">
@@ -160,6 +168,7 @@
                 </table>
             </div>
         </section>
+<!-- --------------------------------------------------------------------------------------- -->
         <section class="teams-section" id="teams">
             <div class="teams-header">
                 <h2>球隊列表</h2>
@@ -190,6 +199,7 @@
                 </div>
             </div>
         </section>
+<!-- --------------------------------------------------------------------------------------- -->
         <section class="players-section" id="players">
             <div class="players-header"><h2>球員列表</h2></div>
             <div class="players-filters">
@@ -199,8 +209,10 @@
                 </select>
             </div>
 
-            <div class="players-grid" id="players-grid"></div>
-
+            <div class="player-content">
+                <div class="players-grid" id="players-grid"></div>
+            </div>
+            
             <div class="player-modal" id="player-modal">
                 <div class="player-modal-backdrop" id="player-modal-backdrop"></div>
                 <div class="player-modal-content">
@@ -221,10 +233,9 @@
                 </div>
             </div>
         </section>
+<!-- --------------------------------------------------------------------------------------- -->
         <section class="about-section" id="about">
             <h2 class="about-title">關於本網站</h2>
-
-            <!-- 專題說明 -->
             <div class="about-block">
                 <h3>專題簡介</h3>
                 <p>
@@ -233,8 +244,6 @@
                     所有資料皆由 API 抓取後，再轉換為本地 JSON 供前端展示。
                 </p>
             </div>
-
-            <!-- 英超介紹 -->
             <div class="about-block">
                 <h3>關於英超 Premier League</h3>
                 <p>
@@ -242,8 +251,6 @@
                     共有 20 支隊伍，採 38 輪主客場雙循環賽制。
                 </p>
             </div>
-
-            <!-- 使用技術 -->
             <div class="about-block">
                 <h3>使用技術</h3>
                 <ul class="tech-list">
@@ -253,8 +260,6 @@
                     <li>Wikipedia API（球員圖片取得）</li>
                 </ul>
             </div>
-
-            <!-- 資料來源 -->
             <div class="about-block">
                 <h3>資料來源</h3>
                 <ul class="source-list">

@@ -14,6 +14,7 @@ html, body{
     width: 100%;
     height: 100%;
     background-color: #d8d8e4;
+    font-size: 16px;
     font-family: 微軟正黑體;
     scroll-behavior: smooth;
 }
@@ -21,7 +22,7 @@ main{
     margin-top: 70px;
 }
 section {
-  scroll-margin-top: 72px;
+    scroll-margin-top: 72px;
 }
 header{
     top: 0;
@@ -57,16 +58,20 @@ header{
     color: var(--Text);
     text-decoration: none;
     padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+.nav-content li a:hover{
+    color: #d3357c;
 }
 .nav-content li a::after {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 0;
+    bottom: -20px;
     transform: translateX(-50%);
     width: 0%;
     height: 3px;
-    background: var(--Accent);
+    background: #d3357c;
     transition: width 0.2s ease;
 }
 
@@ -134,7 +139,7 @@ header{
 }
 .kpi-value{
     display: flex;
-    font-size: 48px;
+    font-size: 2.5rem;
     justify-content: center;
 }
 .kpi-leader-crest {
@@ -231,6 +236,11 @@ header{
     padding: 4px 12px;
     border-radius: 20px;
     cursor: pointer;
+}
+.filter-content{
+    height: 536px;
+    background-color: var(--Primary);
+    border-radius: 20px;
 }
 .fixtures-list {
     display: flex;
@@ -385,6 +395,7 @@ header{
     border: 1px solid #ccc;
     background: #fff;
     cursor: pointer;
+    font-size: 1rem;
     font-weight: 600;
 }
 
@@ -618,13 +629,20 @@ header{
 .players-filters input, .players-filters select{
     padding: 4px 8px;
 }
-
+.player-content{
+    height: 672px;
+    border-radius: 20px;
+    background-color: var(--Primary);
+    margin-top: 12px;
+}
 .players-grid {
     max-height: 600px;
-    margin-top: 12px;
     padding: 24px;
     background-color: var(--Primary);
-    border-radius: 20px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1rem;
