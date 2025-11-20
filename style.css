@@ -112,12 +112,12 @@ header{
 }
 .league-overview{
     width: 100%;
-    padding: 0 36px;
+    padding: 3vh 36px;
 }
 .league-overview-header{
     display: flex;
     justify-content: center;
-    padding: 12px;
+    padding-bottom: 1vh;
 }
 .league-kpi-section, .league-highlight-section{
     margin-bottom: 12px;
@@ -225,14 +225,14 @@ header{
 }
 .fixtures-section{
     width: 100%;
-    padding: 0 36px 36px 36px;
+    padding: 3vh 36px;
     background-color: var(--Background);
     color: var(--Text);
 }
 .fixtures-header, .results-header{
     display: flex;
     justify-content: center;
-    padding: 12px;
+    padding-bottom: 1vh;
 }
 .fixtures-filter{
     display: flex;
@@ -339,7 +339,7 @@ header{
 }
 
 .results-section{
-    padding: 0 36px 24px 36px;
+    padding: 3vh 36px;
 }
 .standings-table {
   width: 100%;
@@ -392,12 +392,11 @@ header{
     width: 100%;
     background-color: var(--Background);
     color: var(--Text);
-    padding: 0 36px 24px 36px;
+    padding: 3vh 36px;
 }
 .stats-header{
     display: flex;
     justify-content: center;
-    padding: 12px;
 }
 .stats-tabs{
     display: flex;
@@ -430,7 +429,6 @@ header{
     display: block;
 }
 
-/* 表格 */
 .stats-table {
     width: 100%;
     border-collapse: collapse;
@@ -461,7 +459,7 @@ header{
 
 .teams-section{
     width: 100%;
-    padding: 0 36px 24px 36px;
+    padding: 3vh 36px;
     background-color: var(--Primary);
     color: var(--Text);
 }
@@ -470,7 +468,7 @@ header{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 12px 0;
+    padding-bottom: 1vh;
 }
 .teams-header p{
     opacity: 0.7;
@@ -483,6 +481,7 @@ header{
 }
 
 .team-card {
+    height: 160px;
     background: #ffffff;
     color: var(--Background);
     border-radius: 12px;
@@ -497,7 +496,7 @@ header{
 }
 
 .team-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
     border-color: #4B2E83;
 }
@@ -528,7 +527,7 @@ header{
 .team-card-header .team-card-meta{
     text-align: start;
 }
-/* Modal */
+
 .team-modal {
     position: fixed;
     inset: 0;
@@ -625,7 +624,7 @@ header{
 
 .players-section {
     width: 100%;
-    padding: 0 36px 24px 36px;
+    padding: 2vh 36px;
 }
 
 .players-header {
@@ -634,7 +633,7 @@ header{
     justify-content: center;
     align-items: center;
     gap: 0.6rem;
-    padding: 12px 0;
+    padding-bottom: 1vh;
 }
 
 .players-filters {
@@ -654,7 +653,7 @@ header{
 }
 .players-grid {
     max-height: 600px;
-    padding: 24px;
+    padding: 0 24px;
     background-color: var(--Primary);
     position: relative;
     top: 50%;
@@ -698,7 +697,6 @@ header{
     opacity: 0.8;
 }
 
-/* Modal */
 .player-modal {
     position: fixed;
     inset: 0;
@@ -751,16 +749,15 @@ header{
 
 .about-section {
     width: 100%;
-    padding: 0 36px 24px 36px;
+    padding: 2vh 36px;
     background-color: var(--Primary);
     color: var(--Text);
 }
 
 .about-title {
-    font-size: 2rem;
     font-weight: 700;
     text-align: center;
-    padding: 12px 0;
+    padding-bottom: 1vh;
 }
 
 .about-subtitle {
