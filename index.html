@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>英格蘭足球超級聯賽</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./JS/Intersection-Observer.js" defer></script>
     <script src="./JS/data-teams.js" defer></script>
     <script src="./JS/overview.js" defer></script>
     <script src="./JS/fixtures.js" defer></script>
@@ -22,29 +23,29 @@
         </div>
         <nav>
             <ul class="nav-content">
-                <li><a href="#overview">總覽</a></li>
-                <li><a href="#fixtures">賽程</a></li>
-                <li><a href="#results">戰績</a></li>
-                <li><a href="#stats">統計資料</a></li>
-                <li><a href="#teams">球隊</a></li>
-                <li><a href="#players">球員</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#overview" class="nav-item" data-target="overview">總覽</a></li>
+                <li><a href="#fixtures" class="nav-item" data-target="fixtures">賽程</a></li>
+                <li><a href="#results"  class="nav-item" data-target="results">戰績</a></li>
+                <li><a href="#stats"    class="nav-item" data-target="stats">統計資料</a></li>
+                <li><a href="#teams"    class="nav-item" data-target="teams">球隊</a></li>
+                <li><a href="#players"  class="nav-item" data-target="players">球員</a></li>
+                <li><a href="#about"    class="nav-item" data-target="about">About</a></li>
             </ul>
         </nav>
     </header>
     <main>
 <!-- --------------------------------------------------------------------------------------- -->
         <div class="home">
-            <h2>英格蘭足球超級聯賽 資訊儀表板</h2>
-            <h2>Premier League Dashboard</h2>
-            <p>本網站以英格蘭足球超級聯賽（Premier League）為主題，整理本季的賽程、戰績、統計數據與球隊／球員資料，讓使用者可以快速掌握聯賽最新動態。</p>
+            <h2 class="reveal">英格蘭足球超級聯賽 資訊儀表板</h2>
+            <h2 class="reveal">Premier League Dashboard</h2>
+            <p class="reveal">本網站以英格蘭足球超級聯賽（Premier League）為主題，整理本季的賽程、戰績、統計數據與球隊／球員資料，讓使用者可以快速掌握聯賽最新動態。</p>
         </div>
 <!-- --------------------------------------------------------------------------------------- -->
         <section class="league-overview" id="overview">
             <div class="league-overview-header"><h2>總覽</h2></div>
             <section class="league-highlight-section">
                 <h3>聯賽亮點 Highlights</h3>
-                <div class="highlight-grid">
+                <div class="highlight-grid reveal">
                     <div class="highlight-block highlight-teams">
                         <h3>排名前三球隊</h3>
                         <ol id="highlight-top-teams">
@@ -61,7 +62,7 @@
             </section>
             <section class="league-kpi-section">
                 <h3>聯賽關鍵數據 Key Figures</h3>
-                <div class="kpi-grid">
+                <div class="kpi-grid reveal">
                     <div class="kpi-card">
                         <span class="kpi-label">已進行場次</span><br>
                         <span class="kpi-value" id="kpi-played">380</span>
@@ -78,7 +79,7 @@
             </section>
         </section>
 <!-- --------------------------------------------------------------------------------------- -->
-        <section class="fixtures-section" id="fixtures">
+        <section class="fixtures-section reveal" id="fixtures">
             <div class="fixtures-header"><h2>比賽賽程</h2></div>
             <div class="fixtures-filter">
                 <div class="filter-group">
@@ -98,9 +99,9 @@
             </div>
         </section>
 <!-- --------------------------------------------------------------------------------------- -->
-        <section class="results-section" id="results">
-            <div class="results-header"><h2>比賽結果與戰績</h2></div>
-            <table class="standings-table">
+        <section class="results-section reveal" id="results">
+            <div class="results-header reveal"><h2>比賽結果與戰績</h2></div>
+            <table class="standings-table reveal">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -116,7 +117,7 @@
             </table>
         </section>
 <!-- --------------------------------------------------------------------------------------- -->
-        <section class="stats-section" id="stats">
+        <section class="stats-section reveal" id="stats">
             <div class="stats-header"><h2>統計資料</h2></div>
             <div class="stats-tabs">
                 <button class="stats-tab active" data-target="scorers">射手榜</button>
@@ -169,7 +170,7 @@
             </div>
         </section>
 <!-- --------------------------------------------------------------------------------------- -->
-        <section class="teams-section" id="teams">
+        <section class="teams-section reveal" id="teams">
             <div class="teams-header">
                 <h2>球隊列表</h2>
                 <p>點擊卡片查看球隊詳情與部分球員名單。</p>
@@ -200,7 +201,7 @@
             </div>
         </section>
 <!-- --------------------------------------------------------------------------------------- -->
-        <section class="players-section" id="players">
+        <section class="players-section reveal" id="players">
             <div class="players-header"><h2>球員列表</h2></div>
             <div class="players-filters">
                 <input type="text" id="player-search" placeholder="搜尋球員姓名…">
@@ -234,7 +235,7 @@
             </div>
         </section>
 <!-- --------------------------------------------------------------------------------------- -->
-        <section class="about-section" id="about">
+        <section class="about-section reveal" id="about">
             <h2 class="about-title">關於本網站</h2>
             <div class="about-block">
                 <h3>專題簡介</h3>

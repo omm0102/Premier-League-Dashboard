@@ -18,6 +18,14 @@ html, body{
     font-family: 微軟正黑體;
     scroll-behavior: smooth;
 }
+.reveal {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.reveal.show {
+  opacity: 1;
+}
 main{
     margin-top: 70px;
 }
@@ -53,17 +61,17 @@ header{
     gap: 1.5vw;
     list-style: none;
 }
-.nav-content li a{
+.nav-item{
     position: relative;
     color: var(--Text);
     text-decoration: none;
     padding-bottom: 5px;
     transition: color 0.3s ease;
 }
-.nav-content li a:hover{
+.nav-item:hover{
     color: #d3357c;
 }
-.nav-content li a::after {
+.nav-item::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -75,8 +83,17 @@ header{
     transition: width 0.2s ease;
 }
 
-.nav-content li a:hover::after {
+.nav-item:hover::after {
     width: 100%;
+}
+.nav-item.active {
+  color: #fff;
+  font-weight: bold;
+}
+
+.nav-item.active::after {
+  width: 100%;
+  background: #fff;
 }
 .home{
     width: 100%;
@@ -238,7 +255,7 @@ header{
     cursor: pointer;
 }
 .filter-content{
-    height: 536px;
+    height: 736px;
     background-color: var(--Primary);
     border-radius: 20px;
 }
@@ -249,7 +266,7 @@ header{
     gap: 0.75rem;
     padding: 16px 0;
     border-radius: 0 0 20px 20px;
-    max-height: 500px;
+    max-height: 700px;
     overflow: hidden scroll;
 }
 
