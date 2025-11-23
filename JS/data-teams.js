@@ -21,8 +21,6 @@ const premierLeagueTeams = [
   { id: 18, name: "West Ham United",          shortName: "West Ham",       crest: "./img/team/west-ham.svg" },
   { id: 19, name: "Wolverhampton Wanderers",  shortName: "Wolves",         crest: "./img/team/wolves.svg" },
   { id: 20, name: "Southampton",              shortName: "Southampton",    crest: "./img/team/southampton.svg" },
-
-  // 以下三隊沒有 shortName，但依然能用 name 查到
   { id: 21,name: "Burnley", crest: "./img/team/burnley.svg"}, 
   { id: 22,name: "Leeds", crest: "./img/team/leeds.svg" },
   { id: 23,name: "Sunderland", crest: "./img/team/sunderland.svg" },
