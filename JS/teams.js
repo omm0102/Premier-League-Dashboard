@@ -2,9 +2,11 @@ let allTeams = [];
 
 async function loadTeamsSection() {
     try {
+        // 讀取所有球隊資料
         const res = await fetch("./JSON/teams.json");
         allTeams = await res.json();
 
+        // 顯示球隊卡片＋設定 Modal 功能
         renderTeamCards(allTeams);
         setupTeamModal();
     } catch (err) {
@@ -13,6 +15,7 @@ async function loadTeamsSection() {
 }
 
 function getLocalCrest(teamName) {
+    // 嘗試從 data-teams.js 找本地隊徽（若有）
     if (typeof getTeamMeta === "function") {
         const meta = getTeamMeta(teamName);
         if (meta && meta.crest) return meta.crest;
@@ -31,6 +34,7 @@ function renderTeamCards(teams) {
         card.className = "team-card";
         card.dataset.teamKey = team.team_key;
 
+        // 若本地有隊徽就用本地圖，否則用 API 提供的 team_badge
         const localCrest = getLocalCrest(team.team_name);
         const crestSrc = localCrest || team.team_badge;
 
@@ -50,6 +54,7 @@ function renderTeamCards(teams) {
             </div>
         `;
 
+        // 點擊卡片 → 打開球隊詳細資料 Modal
         card.addEventListener("click", () => openTeamModal(team.team_key));
         grid.appendChild(card);
     });
@@ -64,6 +69,7 @@ function setupTeamModal() {
         modal.classList.remove("show");
     }
 
+    // 三種關閉方法：背景、關閉鈕、ESC
     backdrop.addEventListener("click", close);
     closeBtn.addEventListener("click", close);
     document.addEventListener("keydown", e => {
@@ -83,24 +89,29 @@ function openTeamModal(teamKey) {
     const team = allTeams.find(t => t.team_key === teamKey);
     if (!team) return;
 
+    // 隊徽：優先用本地版本
     const localCrest = getLocalCrest(team.team_name);
     crestEl.src = localCrest || team.team_badge;
     crestEl.alt = team.team_name + " crest";
+
     nameEl.textContent = team.team_name;
 
+    // 基本資料（國家、成立年份）
     metaEl.textContent = `國家：${team.team_country || "N/A"} · 成立：${team.team_founded || "N/A"}`;
 
+    // 主場資料
     const venue = team.venue || {};
     venueEl.textContent = `主場：${venue.venue_name || "N/A"}（${venue.venue_city || ""}${
         venue.venue_capacity ? ` · 容納 ${venue.venue_capacity} 人` : ""
     }）`;
 
+    // 主教練（只取第一個）
     const coach = (team.coaches && team.coaches[0]) || null;
     coachEl.textContent = coach
         ? `主教練：${coach.coach_name || "N/A"}`
         : "主教練：N/A";
 
-    // 顯示前 10 名球員（簡單版）
+    // 球員列表（簡單版：只顯示前 10 名）
     const players = Array.isArray(team.players) ? team.players.slice(0, 10) : [];
     squadListEl.innerHTML = "";
     players.forEach(p => {
