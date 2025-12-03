@@ -31,7 +31,7 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.8 // 區塊 80% 出現在視窗內時觸發
+    threshold: 0.2 // 區塊 20% 出現在視窗內時觸發
   }
 );
 

@@ -113,7 +113,7 @@ header{
     max-width: 80%;
     opacity: 0.7;
 }
-.league-overview{
+.league-section{
     width: 100%;
     padding: 3vh 36px;
 }
@@ -163,8 +163,8 @@ header{
     justify-content: center;
 }
 .kpi-leader-crest {
-  width: 64px;
-  height: 64px;
+  width: 3.2rem;
+  height: 3.2rem;
 }
 .highlight-team-item,
 .highlight-scorer-item {
@@ -243,7 +243,7 @@ header{
     justify-content: center;
     gap: 36px;
     padding: 12px;
-    background-color: var(--Primary);
+    background-color: var(--Secondary);
     border-radius: 20px 20px 0 0;
 }
 .filter-group{
@@ -856,9 +856,12 @@ header{
 
     html, body {
         overflow-x: hidden;
-        font-size: 10px;
+        font-size: 12px;
     }
-    .league-overview,
+    header h2{
+        display: none;
+    }
+    .league-section,
     .fixtures-section,
     .results-section,
     .stats-section,
@@ -886,6 +889,7 @@ header{
     }
     .fixtures-filter{
         flex-direction: column;
+        align-items: center;
         gap: 12px;
     }
     .fixture-team-name{
@@ -895,7 +899,17 @@ header{
     #filter-team,
     #player-search,
     #player-team-filter{
-        width: 100%;
+        width: 90%;
+    }
+    .filter-group{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+    .btn-reset{
+        width: 96%;
+        border-radius: 10px;
     }
     .fixtures-list {
         max-height: 400px;
@@ -906,8 +920,17 @@ header{
     .teams-grid{
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
+    .team-card-header{
+        justify-content: flex-start;
+    }
+    .team-card-crest{
+        padding-top: 0;
+    }
     .players-filters {
         flex-direction: column;
+    }
+    .players-grid{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
     .site-footer{
         padding: 12px 24px;
