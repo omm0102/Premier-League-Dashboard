@@ -247,14 +247,19 @@ header{
     border-radius: 20px 20px 0 0;
 }
 .filter-group{
+    display: flex;
     padding: 4px 8px;
+    justify-content: center;
+    align-items: center;
 }
-.filter-team{
+.filter-team,
+#filter-date{
     padding: 4px 8px;
+    border-radius: 8px;
 }
 .btn-reset{
-    padding: 4px 12px;
-    border-radius: 20px;
+    padding: 0 18px;
+    border-radius: 18px;
     cursor: pointer;
 }
 .filter-content{
@@ -647,6 +652,11 @@ header{
 }
 .players-filters input, .players-filters select{
     padding: 4px 8px;
+}
+#player-search,
+#player-team-filter{
+    padding: 4px 8px;
+    border-radius: 8px;
 }
 .player-content{
     height: 672px;
